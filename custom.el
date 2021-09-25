@@ -39,6 +39,8 @@
     (cons 340 "#515151")
     (cons 360 "#515151")))
  '(vc-annotate-very-old-color nil))
+
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
