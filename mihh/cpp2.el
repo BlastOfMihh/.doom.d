@@ -14,6 +14,7 @@ Repeated invocations toggle between the two most recently open buffers."
       (let ((a 10))
         (if (string= major-mode "c++-mode")
             (setq file (buffer-file-name (window-buffer (minibuffer-selected-window)))))
+            ;; (setq dir ( (window-buffer (minibuffer-selected-window)))))
         (evil-write-all nil)
 
         (if (boundp 'buf)
@@ -21,6 +22,7 @@ Repeated invocations toggle between the two most recently open buffers."
           (setq buf (+vterm/toggle nil)))
         (with-current-buffer buf
           (text-scale-set 1.1)
+          ;; (vterm-send-string (concat "cd " default-directory " ; " "g++ " file " -o dDg && echo 'Compiled.'; /usr/bin/time -f \"Executed in %esec. Used %KKB.\" ./dDg; rm dDg;") )
           (vterm-send-string (concat "g++ " file " -o dDg && echo 'Compiled.'; /usr/bin/time -f \"Executed in %esec. Used %KKB.\" ./dDg; rm dDg;") )
           ;; (vterm-send-string (concat "\e[1;34mg++ " file " -o dDg && echo 'Compiled.'; /usr/bin/time -f \"Executed in %esec. Used %KKB.\" \e[0m ./dDg; rm dDg;") )
           ;; $ echo -e "\e[1;34mLight Blue Text\e[0m"
