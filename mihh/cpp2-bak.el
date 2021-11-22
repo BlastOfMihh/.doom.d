@@ -19,33 +19,28 @@ Repeated invocations toggle between the two most recently open buffers."
 
         (setq code-buf-default-directory default-directory)
         (if (boundp 'buf)
-            ;; (
+            (
              ;; (kill-buffer buf)
              ;; (+vterm/toggle nil)
              ;; (which-key--hide-buffer-frame )
              ;; (quit-window nill buf)
              ;; (with-current-buffer buf)
-             (pop-to-buffer buf)
-             ;; )
+             ;; (pop-to-buffer buf)
+             )
           (setq buf (+vterm/toggle nil)))
-        (vterm-send-string (concat "cd " code-buf-default-directory "; ") )
-        (vterm-send-string (concat "g++ '" file "' -o ~/dDg && echo 'Compiled.'; /usr/bin/time -f \"Executed in %esec. Used %KKB.\" ~/dDg; rm ~/dDg;") )
-        (vterm-send-return)
+
         (with-current-buffer buf
-        ;;   (text-scale-set 1.6)
-        ;;   ;; (vterm-send-string (concat "cd " default-directory " ; " "g++ " file " -o dDg && echo 'Compiled.'; /usr/bin/time -f \"Executed in %esec. Used %KKB.\" ./dDg; rm dDg;") )
-        ;;   (vterm-send-string (concat "cd " code-buf-default-directory "; ") )
-        ;;   (vterm-send-string (concat "g++ '" file "' -o ~/dDg && echo 'Compiled.'; /usr/bin/time -f \"Executed in %esec. Used %KKB.\" ~/dDg; rm ~/dDg;") )
-        ;;   ;; (vterm-send-string (concat "g++ " file " -o dDg && echo 'Compiled.'; /usr/bin/time -f \"Executed in %esec. Used %KKB.\" ./dDg; rm dDg;") )
-        ;;   ;; (vterm-send-string (concat "\e[1;34mg++ " file " -o dDg && echo 'Compiled.'; /usr/bin/time -f \"Executed in %esec. Used %KKB.\" \e[0m ./dDg; rm dDg;") )
-        ;;   ;; $ echo -e "\e[1;34mLight Blue Text\e[0m"
-        ;;   (vterm-send-return)
+          (text-scale-set 1.6)
+          ;; (vterm-send-string (concat "cd " default-directory " ; " "g++ " file " -o dDg && echo 'Compiled.'; /usr/bin/time -f \"Executed in %esec. Used %KKB.\" ./dDg; rm dDg;") )
+          (vterm-send-string (concat "cd " code-buf-default-directory "; ") )
+          (vterm-send-string (concat "g++ '" file "' -o ~/dDg && echo 'Compiled.'; /usr/bin/time -f \"Executed in %esec. Used %KKB.\" ~/dDg; rm ~/dDg;") )
+          ;; (vterm-send-string (concat "g++ " file " -o dDg && echo 'Compiled.'; /usr/bin/time -f \"Executed in %esec. Used %KKB.\" ./dDg; rm dDg;") )
+          ;; (vterm-send-string (concat "\e[1;34mg++ " file " -o dDg && echo 'Compiled.'; /usr/bin/time -f \"Executed in %esec. Used %KKB.\" \e[0m ./dDg; rm dDg;") )
+          ;; $ echo -e "\e[1;34mLight Blue Text\e[0m"
+          (vterm-send-return)
           (evil-normal-state))
-        ;; (makunbound 'buf)
-        (er-switch-to-previous-buffer)
-        )
-    )
-  )
+        (makunbound 'buf)
+        (er-switch-to-previous-buffer))))
 
 (map! :desc "Run c++ code" "<f9>" #'runc)
 
