@@ -1,5 +1,9 @@
 ;;; gogot_config.el -*- lexical-binding: t; -*-
 
+(add-hook 'gdscript-mode-hook
+          (lambda()
+            (lsp)))
+
 (setq gdscript-godot-executable "/usr/bin/godot")
 
 (defun lsp--gdscript-ignore-errors (original-function &rest args)

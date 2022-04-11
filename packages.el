@@ -1,9 +1,12 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 
+;; (package! default-text-scale)
+
 (package! writeroom-mode)
 (package! olivetti)
 (package! lsp-mode)
+(package! sublime-themes)
 ;; (package! lsp-ui)
 
 

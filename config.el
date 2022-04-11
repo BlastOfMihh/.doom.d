@@ -24,9 +24,9 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 
-(setq doom-theme 'doom-peacock)
+(setq doom-theme 'doom-vibrant)
 
-(setq doom-font (font-spec :family "JetBrains Mono" :size 22))
+(setq doom-font (font-spec :family "JetBrains Mono" :size 20)) ;;22
 ;; (setq doom-font (font-spec :family "DejaVu Sans Mono" :size 20))
 ;; (setq doom-font (font-spec :family "DejaVu Sans Mono" :size 15 :height 17))
       ;; doom-variable-pitch-font (font-spec :family "sans" :size 13))
@@ -65,13 +65,38 @@
 ;; (setq text-scale-mode-step 1.1)
 ;; (setq max-lisp-eval-depth 50000)
 ;; ;;
-;; (add-load-path! "~/.doom.d/mihh")
-(require 'company)
+
+
+
+
+(add-hook 'fundamentals-mode-hook
+          (lambda()
+            (text-scale-increase 2)))
+(add-hook 'prog-mode-hook
+          (lambda()
+            (text-scale-increase 2)))
+(add-hook 'vterm-mode-hook
+          (lambda()
+            (text-scale-increase 1)))
+(add-hook 'dired-mode-hook
+          (lambda()
+            (text-scale-increase 1)))
+(add-hook 'compilation-mode-hook
+          (lambda()
+            (text-scale-increase 1)))
+
+(add-hook 'cpp-mode-hook
+          (lambda()
+            (flycheck-mode)))
+
+;; (setq text-scale-mode-step 1.1)
 (global-auto-revert-mode t)
-(add-load-path! "mihh")
 (setq mihh-dir "~/.doom.d/mihh/" )
-(setq text-scale-mode-amount 1.01)
-;; ;; (require (directory-file-name "~/.doom.d/mihh"))
-;; (load! (concat mihh-dir "godot_config.el"))
-;; (load! (concat mihh-dir "cpp.el"))
-(load! (concat mihh-dir "cpp2.el"))
+(load! (concat mihh-dir "godot_config.el"))
+;; (load! (concat mihh-dir "cpp2.el"))
+(load! (concat mihh-dir "cpp3.el"))
+
+;; (defun buffer-mode (buffer-neim)
+;;   "Returns the major mode associated with a buffer."
+;;   (with-current-buffer buffer-neim
+;;      major-mode))

@@ -5,6 +5,8 @@ Repeated invocations toggle between the two most recently open buffers."
   (interactive)
   (switch-to-buffer-other-frame (other-buffer (current-buffer) 1)))
 
+
+;; 2 b
 (defun runc()
   "Build and runc .cpp files"
   (interactive)
@@ -48,6 +50,7 @@ Repeated invocations toggle between the two most recently open buffers."
   )
 
 (map! :desc "Run c++ code" "<f9>" #'runc)
+
 
 ;; (defun runc()
 ;;   "Build and runc .cpp files"
