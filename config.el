@@ -26,7 +26,7 @@
 
 (setq doom-theme 'doom-vibrant)
 
-(setq doom-font (font-spec :family "JetBrains Mono" :size 20)) ;;22
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font Mono" :size 20)) ;;22
 ;; (setq doom-font (font-spec :family "DejaVu Sans Mono" :size 20))
 ;; (setq doom-font (font-spec :family "DejaVu Sans Mono" :size 15 :height 17))
       ;; doom-variable-pitch-font (font-spec :family "sans" :size 13))
