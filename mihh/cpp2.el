@@ -49,7 +49,7 @@ Repeated invocations toggle between the two most recently open buffers."
     )
   )
 
-(map! :desc "Run c++ code" "<f9>" #'runc)
+(map! :desc "Run c++ code" "<f5>" #'runc)
 
 
 ;; (defun runc()

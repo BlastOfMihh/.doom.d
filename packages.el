@@ -2,7 +2,6 @@
 ;;; $DOOMDIR/packages.el
 
 ;; (package! default-text-scale)
-
 (package! writeroom-mode)
 (package! olivetti)
 (package! lsp-mode)

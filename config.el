@@ -94,7 +94,7 @@
 (setq mihh-dir "~/.doom.d/mihh/" )
 (load! (concat mihh-dir "godot_config.el"))
 ;; (load! (concat mihh-dir "cpp2.el"))
-(load! (concat mihh-dir "cpp3.el"))
+(load! (concat mihh-dir "cpp2.el"))
 
 ;; (defun buffer-mode (buffer-neim)
 ;;   "Returns the major mode associated with a buffer."
