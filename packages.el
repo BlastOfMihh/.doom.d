@@ -5,12 +5,15 @@
 
 
 
+;; (package! copilot
+;;   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 
 
 ;; (package! default-text-scale)
 (package! writeroom-mode)
 (package! olivetti)
 (package! sublime-themes)
+(package! nasm-mode)
 
 
 ;; To install a package with Doom you must declare them here and run 'doom sync'
