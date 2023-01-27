@@ -105,7 +105,10 @@
 (load! (concat mihh-dir "debugger-ig.el"))
 
 
-
+(setq scroll-preserve-screen-position t
+      scroll-conservatively 3
+      maximum-scroll-margin 0.5
+      scroll-margin 3) ; always keep 3 lines above or below cursor
 
 
 ;; (defun buffer-mode (buffer-neim)
@@ -114,7 +117,7 @@
 ;;      major-mode))
 
 
-;; GITHUB COPILOT
+;; GITHUB COPILOT: no working
 ;; accept completion from copilot and fallback to company
 ;; (use-package! copilot
 ;;   :hook (prog-mode . copilot-mode)

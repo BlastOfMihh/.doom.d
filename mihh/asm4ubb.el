@@ -39,4 +39,9 @@
          (debug_cmd (concat "nasm -fobj " src " -o " src ".obj;" alink src ".obj -oPE -subsys console -entry start -o "src ".exe ; " olly src ".exe"))
          (clean_cmd (concat "rm " src ".obj; rm " src ".exe"))
          )
+    (evil-write-all nil)
     (compile (concat debug_cmd ";" clean_cmd))))
+
+(add-hook 'asm-mode-hook
+          (lambda()
+            (nasm-mode)))
