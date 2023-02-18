@@ -100,6 +100,7 @@
 (setq mihh-dir "~/.doom.d/mihh/" )
 
 (load! (concat mihh-dir "asm4ubb.el"))
+(load! (concat mihh-dir "python4ubb.el"))
 (load! (concat mihh-dir "godot_config.el"))
 (load! (concat mihh-dir "cpp2.el"))
 (load! (concat mihh-dir "debugger-ig.el"))

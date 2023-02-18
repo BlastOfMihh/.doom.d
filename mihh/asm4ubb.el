@@ -1,9 +1,13 @@
 ;;; mihh/asm.el -*- lexical-binding: t; -*-
 
-(map! :leader
-      (:prefix ("e" . "execute")
-        :desc "C/C++"
-        "c" #'compileandrun_asm))
+(map!
+      ;; :after asm-mode
+      :mode asm-mode
+      :map asm-mode-map
+      :leader
+      :prefix "e"
+      :desc "Compile and run NASM"
+      "c" #'compileandrun_asm)
 
 (defun compileandrun_asm()
   (interactive)
@@ -25,10 +29,11 @@
 ;; nasm -fobj module_name.asm
 ;; alink module_1.obj module_2.obj ...  module_n.obj -oPE -subsys console -entry start
 
+
 (map! :leader
-      (:prefix ("e" . "debug")
-        :desc "C/C++"
-        "d" #'compileanddebug_asm))
+      :prefix ("e" . "debug")
+      :desc "C/C++"
+      "d" #'compileanddebug_asm)
 
 (defun compileanddebug_asm()
   (interactive)
@@ -42,6 +47,6 @@
     (evil-write-all nil)
     (compile (concat debug_cmd ";" clean_cmd))))
 
-(add-hook 'asm-mode-hook
-          (lambda()
-            (nasm-mode)))
+;; (add-hook 'asm-mode-hook
+;;           (lambda()
+;;             (nasm-mode)))
