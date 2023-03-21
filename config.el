@@ -38,8 +38,7 @@
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
-(menu-bar--display-line-numbers-mode-relative)
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -98,20 +97,73 @@
           (lambda()
             (text-scale-increase 1)))
 
-(add-hook 'cpp-mode-hook
+(add-hook 'prog-mode-hook
           (lambda()
-            (flycheck-mode)))
+            (lsp)))
+
+
+
+;; (add-hook 'evil-insert-state-entry-hook
+;;           (lambda()
+;;             ))
+;; (add-hook 'evil-insert-state-exit-hook
+;;           (lambda()
+;;             ))
 
 (setq text-scale-mode-step 1.05)
 
 (global-auto-revert-mode t)
 
-;; (setq mihh-dir "~/.doom.d/mihh/" )
+(setq mihh-dir "~/.doom.d/mihh/")
 ;; (load! (concat mihh-dir "asm4ubb.el"))
 ;; (load! (concat mihh-dir "python4ubb.el"))
 ;; (load! (concat mihh-dir "godot_config.el"))
 ;; (load! (concat mihh-dir "cpp2.el"))
-;; (load! (concat mihh-dir "debugger-ig.el"))
+
+;;dap stuff i guess
+(load! (concat mihh-dir "debugger-ig.el"))
+
+
+(setq dap-auto-configure-mode t)
+
+;; dap stuff
+(use-package dap-mode
+  :defer
+  :custom
+  (dap-auto-configure-mode t                           "Automatically configure dap.")
+  (dap-auto-configure-features
+   '(sessions locals breakpoints expressions tooltip)  "Remove the button panel in the top.")
+  :config
+  ;;; dap for c++
+  (require 'dap-lldb)
+
+  ;;; set the debugger executable (c++)
+  (setq dap-lldb-debug-program '("/usr/bin/lldb-vscode"))
+
+  ;;; ask user for executable to debug if not specified explicitly (c++)
+  (setq dap-lldb-debugged-program-function (lambda () (read-file-name "Select file to debug.")))
+
+  ;;; default debug template for (c++)
+  (dap-register-debug-template
+   "C++ LLDB dap"
+   (list :type "lldb-vscode"
+         :cwd nil
+         :args nil
+         :request "launch"
+         :program nil))
+
+  (defun dap-debug-create-or-edit-json-template ()
+    "Edit the C++ debugging configuration or create + edit if none exists yet."
+    (interactive)
+    (let ((filename (concat (lsp-workspace-root) "/launch.json"))
+      (default "~/.emacs.d/default-launch.json"))
+      (unless (file-exists-p filename)
+    (copy-file default filename))
+      (find-file-existing filename))))
+
+;; ​
+
+
 
 
 (setq scroll-preserve-screen-position t
@@ -119,6 +171,8 @@
       maximum-scroll-margin 0.5
       scroll-margin 3) ; always keep 3 lines above or below cursor
 
+(global-activity-watch-mode)
+(setq mouse-wheel-progressive-speed nil)
 
 ;; (defun buffer-mode (buffer-neim)
 ;;   "Returns the major mode associated with a buffer."
